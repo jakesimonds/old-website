@@ -2,11 +2,24 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
   }
+
+  #canvas-container {
+    position: absolute;
+    top: 100px; /* Adjust the position on the page */
+    left: 1100px; /* Adjust the position on the page */
+    width: 300px; /* Adjust the size of the container */
+    height: 300px; /* Adjust the size of the container */
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+}
   
   header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+    background-color: #77FF00;
+    color: #00FF00;
+    padding: 50px;
   }
   
   nav ul {
@@ -30,7 +43,7 @@ body {
   }
   
   main {
-    padding: 20px;
+    padding: 40px;
   }
   
   footer {
@@ -39,3 +52,5 @@ body {
     padding: 10px;
     text-align: center;
   }
+
+
