@@ -5,7 +5,7 @@ body {
 
   #canvas-container {
     position: absolute;
-    top: 100px; /* Adjust the position on the page */
+    top: 1px; /* Adjust the position on the page */
     left: 1100px; /* Adjust the position on the page */
     width: 300px; /* Adjust the size of the container */
     height: 300px; /* Adjust the size of the container */
@@ -15,13 +15,32 @@ body {
 canvas {
     display: block;
 }
+
+body {
+  background-image: url('modulo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
   
-  header {
-    background-color: #77FF00;
-    color: #00FF00;
-    padding: 50px;
-  }
+header {
+  background-color: rgba(119,255,0,0.3);
+  color: #00FF00;
+  padding: 0px;
+}
+
+      /* Style for the h1 element */
+      h1 {
+        font-size: 80px; /* Adjust the font size as needed */
+        text-align: center; /* Center the text horizontally */
+      }
   
+
+.my-box {
+  background-color: rgba(255, 255, 255, 0.5); /* Set the background color with 50% opacity */
+  padding: 20px; /* Add some padding around the content */
+}
+
   nav ul {
     list-style: none;
     margin: 0;
@@ -45,11 +64,13 @@ canvas {
   main {
     padding: 40px;
   }
+
+
   
   footer {
     background-color: #333;
     color: #fff;
-    padding: 10px;
+    padding: 0px;
     text-align: center;
   }
 
