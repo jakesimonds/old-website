@@ -57,7 +57,7 @@
   <p>jakesimonds@gmail.com</p>  
 
 
-  <h2>Pick a Number, Get A Fact</h2>
+  <!-- <h2>Pick a Number, Get A Fact</h2>
   <p>Many thanks to numbersapi.com</p>
 
   <select id="numberSelect" class="1-100">
@@ -85,8 +85,8 @@
       const selectElement = document.getElementById('numberSelect');
       const NUM_VAR = selectElement.value;
 
-
-      const response = await fetch('http://numbersapi.com/' + NUM_VAR);
+      //const response = await fetch('https://vercel429project-jakesimonds.vercel.app/api/nums');
+      const response = await fetch('https://numbersapi.com/' + NUM_VAR);
       const fact = await response.text();
 
       if (response.ok) {
@@ -98,7 +98,7 @@
       console.error('Fetch error:', error);
     }
   }
-</script>
+</script> -->
 
   
 
