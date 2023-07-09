@@ -55,6 +55,51 @@
   <a href="https://www.youtube.com/@jakesimonds5051/featured">YouTube</a>&nbsp;&nbsp;&nbsp
 
   <p>jakesimonds@gmail.com</p>  
+
+
+  <h2>Pick a Number, Get A Fact</h2>
+  <p>Many thanks to numbersapi.com</p>
+
+  <select id="numberSelect" class="1-100">
+  <option value="">Select a number</option>
+</select>
+
+
+
+<button id="factButton">Get Fact</button>
+<p id="factText"></p>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(function() {
+    var $select = $(".1-100");
+    for (i = 1; i <= 100; i++) {
+      $select.append($('<option></option>').val(i).html(i));
+    }
+  });
+
+  document.getElementById('factButton').addEventListener('click', getFact);
+
+  async function getFact() {
+    try {
+      const selectElement = document.getElementById('numberSelect');
+      const NUM_VAR = selectElement.value;
+
+
+      const response = await fetch('http://numbersapi.com/' + NUM_VAR);
+      const fact = await response.text();
+
+      if (response.ok) {
+        document.getElementById('factText').textContent = fact;
+      } else {
+        console.error('Response error:', response);
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  }
+</script>
+
   
 
 
