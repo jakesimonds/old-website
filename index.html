@@ -57,7 +57,7 @@
   <p>jakesimonds@gmail.com</p>  
 
 
-  <!-- <h2>Pick a Number, Get A Fact</h2>
+  <h2>Pick a Number, Get A Fact</h2>
   <p>Many thanks to numbersapi.com</p>
 
   <select id="numberSelect" class="1-100">
@@ -80,25 +80,47 @@
 
   document.getElementById('factButton').addEventListener('click', getFact);
 
+  // async function getFact() {
+  //   try {
+  //     const selectElement = document.getElementById('numberSelect');
+  //     const NUM_VAR = selectElement.value;
+
+  //     //const response = await fetch('https://vercel429project-jakesimonds.vercel.app/api/nums');
+  //     const response = await fetch('http://numbersapi.com/' + NUM_VAR);
+  //     const fact = await response.text();
+
+  //     if (response.ok) {
+  //       document.getElementById('factText').textContent = fact;
+  //     } else {
+  //       console.error('Response error:', response);
+  //     }
+  //   } catch (error) {
+  //     console.error('Fetch error:', error);
+  //   }
+  // }
+
   async function getFact() {
-    try {
-      const selectElement = document.getElementById('numberSelect');
-      const NUM_VAR = selectElement.value;
+  try {
+    const selectElement = document.getElementById('numberSelect');
+    const NUM_VAR = selectElement.value;
+    
+    const response = await fetch('https://api.isevenapi.xyz/api/iseven/' + NUM_VAR );
+    const data = await response.json();
 
-      //const response = await fetch('https://vercel429project-jakesimonds.vercel.app/api/nums');
-      const response = await fetch('https://numbersapi.com/' + NUM_VAR);
-      const fact = await response.text();
-
-      if (response.ok) {
-        document.getElementById('factText').textContent = fact;
-      } else {
-        console.error('Response error:', response);
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
+    if (response.ok) {
+      document.getElementById('factText').textContent = data.iseven;
+    } else {
+      console.error('Response error:', response);
     }
+  } catch (error) {
+    console.error('Fetch error:', error);
   }
-</script> -->
+}
+
+
+
+
+</script>
 
   
 
