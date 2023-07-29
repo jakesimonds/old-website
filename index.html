@@ -14,15 +14,15 @@
 
   <h2>About Me</h2>
 
-  <p>I am a grad student studying computer science. Portland, ME. I love the Boston Celtics, learning spanish, and using my highly marketable tech skills to do truly useless things. </p>
+  <p>I am a very junior software individual. Portland, ME. I love the Boston Celtics, learning spanish, and lossy compression.</p>
 
   <table>
     <thead>
     <tr>
         <th rowspan="2">Name</th>
         <th rowspan="1" colspan="2">Weight</th>
-        <th rowspan="2">Makes HTML Tables?</th>
-        <th rowspan="2">Likes David Byrne?</th>
+        <th rowspan="2">Age</th>
+        <th rowspan="2">Height</th>
         <th rowspan="2">Fun Fact</th>
     </tr>
 
@@ -35,17 +35,15 @@
     <tbody>
         <td>Jake Simonds</td>
         <td>160</td>
-        <td>Not sure</td>
-        <td>Yes</td>
-        <td>Sure do!</td>
-        <td> The guys at Spectrum think I'm just some dumb hick. They said that to me at a dinner. </td>
+        <td>73.6</td>
+        <td>31</td>
+        <td>Medium-Tall</td>
+        <td> My social security number % 372 == 0 </td>
     </tr>
 
     </tbody>
 </table>
   
-  <h2>Glitch Art?!</h2>
-  <a href="page2.html">Glitch Art</a>
 
   <h2>Contact Info</h2>
 
@@ -56,18 +54,32 @@
 
   <p>jakesimonds@gmail.com</p>  
 
+  <h2>Glitch Art?!</h2>
+  <a href="page2.html">Glitch Art</a>
 
-  <h2>Pick a Number, Get A Fact</h2>
-  <p>Many thanks to numbersapi.com</p>
+  <h2>Conversation/Collaboration</h2>
+  <p>I am currently really interested in:</p>
+  <li>hobbiest level electronics(breadboards, frankenstein-ing goodwill junk, etc)</li>
+  <li>image compression, synthesizers, linear algebra & latent space</li>
+  <li>bridging software & artistic enterprises</li>
+  <li>finding collaborators to make fun, educational but also ambitious tutorials (like the couple I have on my youtube channel but better)</li>
+  <p>If any of that strikes a chord don't be a stranger!</p>
+
+
+  <h2>Even/Odd Number Checker</h2>
+  <p>Many thanks to isevenapi.xyz for crunching the numbers. </p>
 
   <select id="numberSelect" class="1-100">
   <option value="">Select a number</option>
+
 </select>
 
 
-
-<button id="factButton">Get Fact</button>
+<button id="factButton">Check even-ness</button>
 <p id="factText"></p>
+<!-- <p id="ad"></p> -->
+
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -109,6 +121,8 @@
 
     if (response.ok) {
       document.getElementById('factText').textContent = data.iseven;
+      document.getElementById('ad').textContent = data.ad;
+
     } else {
       console.error('Response error:', response);
     }
