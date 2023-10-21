@@ -141,8 +141,6 @@
 
   </script>
 
-
-
   <button id="downloadButton">Download audio (hopefully)</button>
 
   <script>
@@ -152,10 +150,12 @@
 
       // Add a click event listener to the button
       downloadButton.addEventListener("click", function () {
+
+        console.log("hello");
         fetch('https://backend-jakesimonds-71b0920b1859.herokuapp.com/presigned-url')
           .then(response => response.json())
           .then(data => {
-            const presignedUrl = data.url;
+            window.location.href = data.url;
             // Use the presignedUrl for further AWS S3 operations or for your frontend logic
           })
           .catch(error => {
@@ -164,17 +164,6 @@
 
 
 
-
-        // Make an HTTP GET request to your server to get the pre-signed URL
-        <!-- fetch("http://localhost:5000/presigned-url")
-          .then(response => response.json())
-          .then(data => {
-            // Use the pre-signed URL to download the file
-            window.location.href = data.url;
-          })
-          .catch(error => {
-            console.error("Error fetching pre-signed URL:", error);
-          }); -->
       });
     });
   </script>
