@@ -1,68 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
 
   <h1>Jake Simonds</h1>
 
-  <img src="me.jpg" alt="">
+  <img src="client/pics/me.jpg" alt="">
 
   <h2>About Me</h2>
 
-  <p>I am a very junior software individual. Portland, ME. I love the Boston Celtics, learning spanish, and lossy compression.</p>
+  <p>I am a very junior software individual. Portland, ME. I love the Boston Celtics, learning spanish, and lossy
+    compression.</p>
 
   <table>
     <thead>
-    <tr>
+      <tr>
         <th rowspan="2">Name</th>
         <th rowspan="1" colspan="2">Weight</th>
         <th rowspan="2">Age</th>
         <th rowspan="2">Height</th>
         <th rowspan="2">Fun Fact</th>
-    </tr>
+      </tr>
 
-    <tr>
+      <tr>
         <th>lbs</th>
         <th>kg</th>
-    </tr>
+      </tr>
 
     </thead>
     <tbody>
-        <td>Jake Simonds</td>
-        <td>160</td>
-        <td>73.6</td>
-        <td>31</td>
-        <td>Medium-Tall</td>
-        <td> My social security number % 372 == 0 </td>
-    </tr>
+      <td>Jake Simonds</td>
+      <td>160</td>
+      <td>73.6</td>
+      <td>31</td>
+      <td>Medium-Tall</td>
+      <td> My social security number % 372 == 0 </td>
+      </tr>
 
     </tbody>
-</table>
-  
+  </table>
+
 
   <h2>Contact Info</h2>
 
-  
-  <a href="https://www.linkedin.com/in/jake-simonds/">LinkedIn</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/jakesimonds">Github</a>&nbsp;&nbsp;&nbsp;
+
+  <a href="https://www.linkedin.com/in/jake-simonds/">LinkedIn</a>&nbsp;&nbsp;&nbsp;<a
+    href="https://github.com/jakesimonds">Github</a>&nbsp;&nbsp;&nbsp;
   <a href="https://support.google.com/googlecurrents/answer/9217723?hl=en&authuser=0">Google+</a>&nbsp;&nbsp;&nbsp
   <a href="https://www.youtube.com/@jakesimonds5051/featured">YouTube</a>&nbsp;&nbsp;&nbsp
 
-  <p>jakesimonds@gmail.com</p>  
+  <p>jakesimonds@gmail.com</p>
 
   <h2>Glitch Art?!</h2>
   <a href="page2.html">Glitch Art</a>
 
   <h2>Conversation/Collaboration</h2>
   <p>I am currently really interested in:</p>
-  <li>hobbiest level electronics(breadboards, frankenstein-ing goodwill junk, etc)</li>
+  <li>hobbiest level electronics</li>
   <li>image compression, synthesizers, linear algebra & latent space</li>
   <li>bridging software & artistic enterprises</li>
-  <li>finding collaborators to make fun, educational but also ambitious tutorials (like the couple I have on my youtube channel but better)</li>
+  <li>finding collaborators to make fun, educational tutorials (like the couple I have on my youtube
+    channel but better)</li>
   <p>If any of that strikes a chord don't be a stranger!</p>
 
 
@@ -70,74 +75,103 @@
   <p>Many thanks to isevenapi.xyz for crunching the numbers. </p>
 
   <select id="numberSelect" class="1-100">
-  <option value="">Select a number</option>
+    <option value="">Select a number</option>
 
-</select>
-
-
-<button id="factButton">Check even-ness</button>
-<p id="factText"></p>
-<!-- <p id="ad"></p> -->
+  </select>
 
 
+  <button id="factButton">Check even-ness</button>
+  <p id="factText"></p>
+  <!-- <p id="ad"></p> -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(function() {
-    var $select = $(".1-100");
-    for (i = 1; i <= 100; i++) {
-      $select.append($('<option></option>').val(i).html(i));
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function () {
+      var $select = $(".1-100");
+      for (i = 1; i <= 100; i++) {
+        $select.append($('<option></option>').val(i).html(i));
+      }
+    });
+
+    document.getElementById('factButton').addEventListener('click', getFact);
+
+    // async function getFact() {
+    //   try {
+    //     const selectElement = document.getElementById('numberSelect');
+    //     const NUM_VAR = selectElement.value;
+
+    //     //const response = await fetch('https://vercel429project-jakesimonds.vercel.app/api/nums');
+    //     const response = await fetch('http://numbersapi.com/' + NUM_VAR);
+    //     const fact = await response.text();
+
+    //     if (response.ok) {
+    //       document.getElementById('factText').textContent = fact;
+    //     } else {
+    //       console.error('Response error:', response);
+    //     }
+    //   } catch (error) {
+    //     console.error('Fetch error:', error);
+    //   }
+    // }
+
+    async function getFact() {
+      try {
+        const selectElement = document.getElementById('numberSelect');
+        const NUM_VAR = selectElement.value;
+
+        const response = await fetch('https://api.isevenapi.xyz/api/iseven/' + NUM_VAR);
+        const data = await response.json();
+
+        if (response.ok) {
+          document.getElementById('factText').textContent = data.iseven;
+          document.getElementById('ad').textContent = data.ad;
+
+        } else {
+          console.error('Response error:', response);
+        }
+      } catch (error) {
+        console.error('Fetch error:', error);
+      }
     }
-  });
-
-  document.getElementById('factButton').addEventListener('click', getFact);
-
-  // async function getFact() {
-  //   try {
-  //     const selectElement = document.getElementById('numberSelect');
-  //     const NUM_VAR = selectElement.value;
-
-  //     //const response = await fetch('https://vercel429project-jakesimonds.vercel.app/api/nums');
-  //     const response = await fetch('http://numbersapi.com/' + NUM_VAR);
-  //     const fact = await response.text();
-
-  //     if (response.ok) {
-  //       document.getElementById('factText').textContent = fact;
-  //     } else {
-  //       console.error('Response error:', response);
-  //     }
-  //   } catch (error) {
-  //     console.error('Fetch error:', error);
-  //   }
-  // }
-
-  async function getFact() {
-  try {
-    const selectElement = document.getElementById('numberSelect');
-    const NUM_VAR = selectElement.value;
-    
-    const response = await fetch('https://api.isevenapi.xyz/api/iseven/' + NUM_VAR );
-    const data = await response.json();
-
-    if (response.ok) {
-      document.getElementById('factText').textContent = data.iseven;
-      document.getElementById('ad').textContent = data.ad;
-
-    } else {
-      console.error('Response error:', response);
-    }
-  } catch (error) {
-    console.error('Fetch error:', error);
-  }
-}
 
 
 
 
-</script>
+  </script>
 
-  
+
+
+  <button id="downloadButton">Download audio (hopefully)</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get the button element
+      const downloadButton = document.getElementById("downloadButton");
+
+      // Add a click event listener to the button
+      downloadButton.addEventListener("click", function () {
+        // Make an HTTP GET request to your server to get the pre-signed URL
+        fetch("http://localhost:5000/presigned-url")
+          .then(response => response.json())
+          .then(data => {
+            // Use the pre-signed URL to download the file
+            window.location.href = data.url;
+          })
+          .catch(error => {
+            console.error("Error fetching pre-signed URL:", error);
+          });
+      });
+    });
+  </script>
+
+
+
+
+
 
 
 </body>
+
 </html>
